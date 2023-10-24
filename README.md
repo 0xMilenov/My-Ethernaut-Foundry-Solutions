@@ -1,66 +1,28 @@
-## Foundry
+## My Ethernaut foundry solutions
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+In this repository, you'll find my answers to the puzzles presented in OpenZeppelin's Ethernaut wargames. With the help of Foundry, every puzzle comes with its own test suite (found in test/.t.sol), related scripts (in script/.s.sol), and a descriptive guide. Additionally, certain puzzles highlight an exploit available in src/*.sol.
 
-Foundry consists of:
+## Setup Instructions:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+1. Download and set up Foundry.
+2. Set up a testing wallet, for instance using MetaMask.
+3. Create a .env file by duplicating .env.example and then input the necessary keys and instance addresses.
+4. Integrate a Sepolia RPC URL in foundry.toml. You can obtain this from sources like Alchemy or Infura.
 
-## Documentation
+## **How to Execute Each Challenge:**
 
-https://book.getfoundry.sh/
+Here's a general workflow:
 
-## Usage
+## To run tests:
 
-### Build
-
-```shell
-$ forge build
+```bash
+forge test -vvvv
+# or for a specific challenge 
+forge test -vvvv --match-path ./test/01/Fallback.t.sol
 ```
 
-### Test
+## To execute scripts:
 
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```bash
+forge script ./script/01/Fallback.s.sol --broadcast -vvvv --rpc-url sepolia
 ```
